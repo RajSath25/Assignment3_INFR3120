@@ -1,0 +1,67 @@
+<%- include ../Partials/header.ejs %>
+<%- include ../Partials/main_nav.ejs %>
+
+<main>
+    <div class="container">
+      <div class="row">
+      <div class="col-md-offset-3 col-md-6">
+        <h1><%= title %></h1>
+        <a href="/grade/add" class = "btn btn-primary"
+        role = "button"> <i class = "fas fa-plus-circle"></i>Add Grade</a>
+        <p id = "average" class="text"></p>
+        <button class="btn btn-primary" onclick="calculate()">Average</button>
+        <table class = "table table-bordered table-striped table-hover" id="gradeTable">
+            <tr>
+                <th class = "text-center">Assignment Name</th>
+                <th class = "text-center">Grade Numerator</th>
+                <th class = "text-center">Grade Total</th>
+                <th class = "text-center">Weight</th>
+            </tr>
+
+            <% for(let count=0; count<GradeList.length; count++) { %>
+               <tr>
+                    <td class="text-center"><%= GradeList[count].AssignmentName %></td>
+                    <td class="text-center" id="numer"><%= GradeList[count].GradeNumerator %></td>
+                    <td class="text-center" id="total"><%= GradeList[count].GradeTotal %></td>
+                    <td class="text-center" id="weight"><%= GradeList[count].Weight %></td>
+               </tr> 
+            <% } %>
+        </table>
+      </div>
+      </div>
+    </div>
+</main>
+
+<script>
+  function calculate() {
+    const gradetable = document.getElementById("gradeTable");
+    let totalWeight = 0;
+    let totalGrade = 0;
+    let grade = 0;
+
+    for (let i = 1; i <= gradetable.rows.length; i++) {
+        let row = gradetable.rows[i];
+
+
+        let numerator = parseInt(row.cells[1].innerText); 
+        let total = parseInt(row.cells[2].innerText); 
+        let weight = parseInt(row.cells[3].innerText);
+
+
+        if (total != 100) {
+          numerator = (numerator / total) * 100;
+        }
+        grade = numerator * weight;
+        totalGrade += grade;
+        totalWeight += weight;
+
+        let averageGrade = totalGrade / totalWeight;
+        document.getElementById("average").innerText = averageGrade.toFixed(2);
+    }
+
+
+  }
+</script>
+
+<%- include ../Partials/bottom_nav.ejs %>
+<%- include ../Partials/footer.ejs %>
