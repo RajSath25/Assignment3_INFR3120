@@ -1,3 +1,6 @@
+/* App.js
+
+Page serves as file to add all routers and folders that can be used throughout the program for other files.*/
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');

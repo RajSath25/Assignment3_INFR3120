@@ -1,3 +1,15 @@
+<!-- EJS Page for previewing grades list and buttons for adding, editting, and deleting grades.
+
+This page serves as a list, displaying the grades and has buttons for adding, deleting, and editting grades.
+
+
+Assignment Name: values from database and forms
+Grade Numerator: values from database and forms
+Grade Total: values from database and forms
+Weight: values from database and forms
+
+Also has function for calcuting average. (is available at the bottom of this file)
+ -->
 <%- include ../Partials/header.ejs %>
 <%- include ../Partials/main_nav.ejs %>
 
@@ -24,6 +36,15 @@
                     <td class="text-center" id="numer"><%= GradeList[count].GradeNumerator %></td>
                     <td class="text-center" id="total"><%= GradeList[count].GradeTotal %></td>
                     <td class="text-center" id="weight"><%= GradeList[count].Weight %></td>
+                    <td class="text-center">
+                      <a href="/grade/edit/<%= GradeList[count]._id%>" 
+                      class = "btn btn-primary btn-sm"> 
+                      <i class="fas fa-pencil-alt"></i>Edit</a></td>
+
+                    <td class="text-center">
+                      <a href="/grade/delete/<%= GradeList[count]._id%>" 
+                      class = "btn btn-danger btn-sm"> 
+                      <i class="fas fa-trash-alt"></i>Delete</a></td>
                </tr> 
             <% } %>
         </table>

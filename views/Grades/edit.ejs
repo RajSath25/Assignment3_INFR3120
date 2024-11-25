@@ -1,44 +1,43 @@
-<!-- EJS Page for adding grades.
+<!-- EJS Page for editting grades.
 
-This page serves as a form for adding new grades, to be used to calculate the average
+This page serves as a form for editting grades, to be used to calculate the average
 
 Form:
 
-Assignment Name: textField for name of assignment
-Grade Numerator: textField for grade
-Grade Total: textField for total grade
-Weight: textField for the weight of the assignment
+Assignment Name: textField for name of assignment with the value already present to edit
+Grade Numerator: textField for grade with the value already present to edit
+Grade Total: textField for total grade with the value already present to edit
+Weight: textField for the weight of the assignment with the value already present to edit
  -->
-
 <%- include ../Partials/header.ejs %>
 <%- include ../Partials/main_nav.ejs %>
 <div class = "container">
-    <div class = "row">
+    <div class="row">
         <div class = "offset-md-3 col-md-6">
             <h1><%= title %></h1>
-            <form class = "form" method="post">
+            <form class="form" method="post">
                 <div class="form-group">
                     <label for="assignmentNameTextField">Assignment Name</label>
                     <input type="text" class="form-control" placeholder="Enter assignment name" 
-                    name="AssignmentName" id="assignmentNameTextField" required>
+                    name="AssignmentName" id="assignmentNameTextField" value="<%= grade.AssignmentName %>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="gradeNumeratorTextField">Grade Numerator</label>
                     <input type="text" class="form-control" placeholder="Enter grade numerator" 
-                    name="GradeNumerator" id="gradeNumeratorTextField" required>
+                    name="GradeNumerator" id="gradeNumeratorTextField" value="<%= grade.GradeNumerator %>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="gradeTotalTextField">Grade Total</label>
                     <input type="text" class="form-control" placeholder="Enter grade total" 
-                    name="GradeTotal" id="gradeTotalTextField" required>
+                    name="GradeTotal" id="gradeTotalTextField" value="<%= grade.GradeTotal %>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="weightTextField">Weight</label>
                     <input type="text" class="form-control" placeholder="Enter weight" 
-                    name="Weight" id="weightTextField" required>
+                    name="Weight" id="weightTextField" value="<%= grade.Weight %>" required>
                 </div>
 
                 <button class = "btn btn-primary" type="submit"><i class="fa-solid fa-edit"></i> Submit</button>
@@ -50,7 +49,5 @@ Weight: textField for the weight of the assignment
     </div>
 
 </div>
-
 <%- include ../Partials/bottom_nav.ejs %>
 <%- include ../Partials/footer.ejs %>
-
